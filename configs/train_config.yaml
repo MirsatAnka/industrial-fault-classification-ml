@@ -1,0 +1,32 @@
+# Experiment & Model Configuration
+project_name: "industrial-fault-classification-ml"
+random_seed: 42
+
+data:
+  target_column: "fault_mode"
+  test_size: 0.20
+  cv_folds: 5
+  stratified: true
+
+models:
+  random_forest:
+    n_estimators: 200
+    max_depth: 15
+    min_samples_split: 5
+    criterion: "gini"
+    n_jobs: -1
+
+  xgboost:
+    n_estimators: 250
+    learning_rate: 0.05
+    max_depth: 6
+    subsample: 0.8
+    colsample_bytree: 0.8
+    eval_metric: "mlogloss"
+    random_state: 42
+
+  svm:
+    kernel: "rbf"
+    C: 10.0
+    gamma: "scale"
+    probability: true
